@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Concerto Tests</title>
+  <style type="text/css">
+    body {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #554;
+      margin: 0px;
+      height: 80%;
+    }
+
+    a {
+      color: #554;
+      text-decoration: none;
+      border-bottom: dotted 2px;
+    }
+
+    a.button {
+      color: green;
+      background: #bfb;
+      text-decoration: none;
+      padding: 5px;
+      margin: 2px;
+      border: 5px solid #aea;
+    }
+
+    div#error {
+      width: 60%;
+      padding: 10px;
+      color: red;
+      background: #faa;
+      border: 15px solid #d99;
+    }
+
+    div.testcanvas {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      padding: 10px;
+      color: #554;
+    }
+
+    div.testcanvas .vex-tabdiv {
+      background: #eed;
+      padding: 10px;
+      border: 10px solid #ddc;
+    }
+
+    div.testcanvas .name {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      padding: 10px;
+      color: #554;
+    }
+
+    div.xml-test{
+      background-color: rgb(211, 255, 211);;
+    }
+
+  </style>
+
+
+  <script src="../bower_components/vexflow/build/vexflow/vexflow-min.js"></script>
+
+  <!-- Test Sources -->
+  <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css"
+    type="text/css" media="screen" />
+  <script src="../bower_components/qunit/qunit/qunit.js"></script>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/raphael/raphael-min.js"></script>
+  <script src="../bower_components/tv4/tv4.js"></script>
+
+  <!-- Get Concerto Files -->
+<script type="text/javascript" src="../src/concerto.js"></script>
+<script type="text/javascript" src="../src/table.js"></script>
+<script type="text/javascript" src="../src/parser.js"></script>
+<script type="text/javascript" src="../src/attributesmanager.js"></script>
+<script type="text/javascript" src="../src/layoutmanager.js"></script>
+<script type="text/javascript" src="../src/notemanager.js"></script>
+<script type="text/javascript" src="../src/measuremanager.js"></script>
+<script type="text/javascript" src="../src/barlinemanager.js"></script>
+<script type="text/javascript" src="../src/converter.js"></script>
+
+  <script src="vexflow_test_helpers.js"></script>
+  <script src="mocks.js"></script>
+  <script src="stave_tests.js"></script>
+  <script src="tabstave_tests.js"></script>
+  <script src="voice_tests.js"></script>
+  <script src="stavenote_tests.js"></script>
+  <script src="tabnote_tests.js"></script>
+  <script src="tickcontext_tests.js"></script>
+  <script src="modifier_tests.js"></script>
+  <script src="accidental_tests.js"></script>
+  <script src="dot_tests.js"></script>
+  <script src="bend_tests.js"></script>
+  <script src="formatter_tests.js"></script>
+  <script src="stavetie_tests.js"></script>
+  <script src="tabtie_tests.js"></script>
+  <script src="tabslide_tests.js"></script>
+  <script src="beam_tests.js"></script>
+  <script src="auto_beam_formatting_tests.js"></script>
+  <script src="vibrato_tests.js"></script>
+  <script src="annotation_tests.js"></script>
+  <script src="tuning_tests.js"></script>
+  <script src="keysignature_tests.js"></script>
+  <script src="timesignature_tests.js"></script>
+  <script src="clef_tests.js"></script>
+  <script src="music_tests.js"></script>
+  <script src="keymanager_tests.js"></script>
+  <script src="articulation_tests.js"></script>
+  <script src="staveconnector_tests.js"></script>
+  <script src="percussion_tests.js"></script>
+  <script src="key_clef_tests.js"></script>
+  <script src="stavehairpin_tests.js"></script>
+  <script src="rhythm_tests.js"></script>
+  <script src="tuplet_tests.js"></script>
+  <script src="boundingbox_tests.js"></script>
+  <script src="textnote_tests.js"></script>
+  <script src="strokes_tests.js"></script>
+  <script src="stringnumber_tests.js"></script>
+  <script src="rests_tests.js"></script>
+  <script src="threevoice_tests.js"></script>
+  <script src="table_tests.js"></script>
+
+  <script>
+    $(function() {
+      Vex.Flow.Test.Stave.Start();
+/*
+      Vex.Flow.Test.TabStave.Start();
+      Vex.Flow.Test.Voice.Start();
+      Vex.Flow.Test.StaveNote.Start();
+      Vex.Flow.Test.TabNote.Start();
+      Vex.Flow.Test.TickContext.Start();
+      Vex.Flow.Test.ModifierContext.Start();
+      Vex.Flow.Test.Accidental.Start();
+      Vex.Flow.Test.Dot.Start();
+      Vex.Flow.Test.Bend.Start();
+      Vex.Flow.Test.Formatter.Start();
+      Vex.Flow.Test.Clef.Start();
+      Vex.Flow.Test.KeySignature.Start();
+      Vex.Flow.Test.TimeSignature.Start();
+      Vex.Flow.Test.StaveTie.Start();
+      Vex.Flow.Test.TabTie.Start();
+      Vex.Flow.Test.TabSlide.Start();
+      Vex.Flow.Test.Beam.Start();
+      Vex.Flow.Test.AutoBeamFormatting.Start();
+      Vex.Flow.Test.Vibrato.Start();
+      Vex.Flow.Test.Annotation.Start();
+      Vex.Flow.Test.Tuning.Start();
+      Vex.Flow.Test.Music.Start();
+      Vex.Flow.Test.KeyManager.Start();
+      Vex.Flow.Test.Articulation.Start();
+      Vex.Flow.Test.StaveConnector.Start();
+      Vex.Flow.Test.Percussion.Start();
+      Vex.Flow.Test.ClefKeySignature.Start();
+      Vex.Flow.Test.StaveHairpin.Start();
+      Vex.Flow.Test.Rhythm.Start();
+      Vex.Flow.Test.Tuplet.Start();
+      Vex.Flow.Test.BoundingBox.Start();
+      Vex.Flow.Test.Strokes.Start();
+      Vex.Flow.Test.StringNumber.Start();
+      Vex.Flow.Test.Rests.Start();
+      Vex.Flow.Test.ThreeVoices.Start();
+      Vex.Flow.Test.Table.Start();
+/*
+      Vex.Flow.Test.TextNote.Start();
+*/
+    });
+  </script>
+</head>
+
+<body>
+  <div style="text-align: center;">
+    <h1 id="qunit-header">VexFlow Tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+
+    <div id="vexflow_testoutput"></div>
+
+    <p> Version 0.1 by <a href="http://0xfe.blogspot.com">0xfe</a> </p>
+  </div>
+</body>
+
+</html>
